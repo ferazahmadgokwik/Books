@@ -7,14 +7,17 @@ import {
   Param,
   Body,
   ParseIntPipe,
+  UseGuards,
 } from '@nestjs/common';
 
 import { BookService } from './books.service';
 import { CreateBookDto } from './dto/create-book.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('books')
 export class BookController {
   constructor(private readonly bookService: BookService) {}
+  @UseGuards(AuthGuard)
   @Get()
   findAll() {
     return this.bookService.findAll();
