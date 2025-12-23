@@ -13,14 +13,12 @@ export class BookService {
     const book = { id, ...createBookDto };
     this.books.push(book);
     return {
-      code: 1,
       data: book,
       message: 'succes',
     };
   }
   findAll() {
     return {
-      code: 1,
       data: this.books,
       message: 'success',
     };
@@ -32,7 +30,6 @@ export class BookService {
       throw new NotFoundException('Not Found');
     }
     return {
-      code: 1,
       message: 'success',
       data: book,
     };
@@ -47,7 +44,6 @@ export class BookService {
     book.title = updateBookDto.title;
 
     return {
-      code: 1,
       data: book,
       message: 'success',
     };
@@ -59,7 +55,6 @@ export class BookService {
     }
     this.books = this.books.filter((b) => b.id != id);
     return {
-      code: 1,
       data: null,
       message: 'deleted successfully',
     };
